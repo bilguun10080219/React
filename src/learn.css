@@ -1,0 +1,73 @@
+/* ——— Common ——— */
+:root{
+  --lr-bg: #0f1115;
+  --lr-panel: #1a1d24;
+  --lr-border: #2b2f3a;
+
+  --lr-code-bg: #0b0d12;
+  --lr-code-edge: #00d9ff33;
+  --lr-code-text: #cfe9d1;
+
+  --lr-info-bg: #0e2238;
+  --lr-info-border: #60a5fa;
+
+  --lr-tip-bg: #1b2a14;
+  --lr-tip-border: #84cc16;
+
+  --lr-warn-bg: #2b1f13;
+  --lr-warn-border: #f59e0b;
+}
+
+.lr-section { margin: 18px 0; }
+
+/* ——— Code ——— */
+.lr-code {
+  background: var(--lr-code-bg);
+  border: 1px solid var(--lr-border);
+  border-radius: 12px;
+  box-shadow: 0 0 20px var(--lr-code-edge);
+  overflow: hidden;
+}
+.lr-code__label {
+  padding: 8px 12px;
+  font-size: 12px;
+  letter-spacing: .02em;
+  color: #9cc8ff;
+  background: #0f172a;
+  border-bottom: 1px solid var(--lr-border);
+}
+.lr-code pre {
+  margin: 0;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--lr-code-text);
+}
+
+/* ——— Explain ——— */
+.lr-explain {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border-left: 4px solid;
+  background: var(--lr-panel);
+  color: #eceff3;
+}
+
+.lr-explain--info {
+  background: var(--lr-info-bg);
+  border-color: var(--lr-info-border);
+}
+.lr-explain--tip {
+  background: var(--lr-tip-bg);
+  border-color: var(--lr-tip-border);
+}
+.lr-explain--warn {
+  background: var(--lr-warn-bg);
+  border-color: var(--lr-warn-border);
+}
+
+/* Жижиг текст */
+.lr-muted { color:#9ca3af; font-size: 13px; }
