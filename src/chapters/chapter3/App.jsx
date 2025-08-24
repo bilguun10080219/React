@@ -3,10 +3,20 @@ import CodeBlock from "../../components/CodeBlock";
 import Explain from "../../components/Explain";
 import "../../learn.css"; // эсвэл MainApp.css дотор @import хийсэн бол хэрэггүй
 
-function Chapter3() {
+// Chapter3.js
+function Greeting({ name }) {
+  return <p className="text-green-600">Сайн уу, {name}! 👋</p>;
+}
+
+ function Chapter3() {
   return (
     <div>
-      <h2>Functional Programming with JavaScript</h2>
+    <div className="p-4 border rounded-xl shadow-md w-64 bg-white">
+      <h2 className="text-lg font-bold">Chapter 3: Props</h2>
+      <Greeting name="Билгүүн" />
+      <Greeting name="React суралцагч" />
+    </div>
+          <h2>Functional Programming with JavaScript</h2>
 
       <div className="lr-section">
   <CodeBlock label="Imperative vs Declarative">
@@ -59,8 +69,8 @@ const sum = numbers.reduce((total, n) => total + n, 0);`}
 </Explain>
   </CodeBlock>
 </div>
-
     </div>
   );
 }
+
 export default Chapter3
