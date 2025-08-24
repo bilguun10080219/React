@@ -1,112 +1,155 @@
+import React from "react";
 import CodeBlock from "../../components/CodeBlock";
 import Explain from "../../components/Explain";
 import "../../learn.css"; 
 
- function Chapter5() {
+function Chapter5() {
   return (
     <div>
       <h2>React with JSX</h2>
+
       <div className="lr-section">
-  <CodeBlock label="JSX ба React.createElement харьцуулалт">
-{`// JSX хувилбар
-const element = <h1 className="title">Сайн уу, JSX!</h1>
+        <CodeBlock label="React Elements as JSX">
+          {`const element = <h1>Hello, JSX!</h1>;`}
+          <Explain variant="info">
+            React элементийг JSX ашиглан илэрхийлж болно. JSX нь JavaScript-ийн дотор HTML шиг харагддаг syntax юм.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-// Pure React хувилбар
-const element = React.createElement(
-  "h1",
-  { className: "title" },
-  "Сайн уу, JSX!"
-)`}
+      <div className="lr-section">
+        <CodeBlock label="JSX Tips">
+          {`const name = "Bilguun";
+const greeting = <h1>Hello, {name}!</h1>;`}
+          <Explain variant="info">
+            JSX дотор {`{ }`} ашиглан JavaScript хувьсагч болон илэрхийлэл оруулах боломжтой.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-  <Explain variant="info">
-    <p>
-      JSX нь HTML шиг харагддаг боловч ард талдаа <b>React.createElement</b>-д хөрвөнө.
-      Ингэснээр код илүү цэвэрхэн бөгөөд уншихад ойлгомжтой болно.
-    </p>
-    <p>
-      Үнэндээ React-д JSX заавал шаардлагатай биш, гэхдээ ихэнх төсөл дээр илүү уншигдахуйц тул
-      стандарт сонголт болсон.
-    </p>
-  </Explain>
-  </CodeBlock>
-</div>
+      <div className="lr-section">
+        <CodeBlock label="Mapping Arrays with JSX">
+          {`const fruits = ["Apple", "Banana", "Cherry"];
 
-<div className="lr-section">
-  <CodeBlock label="JSX дотор динамик утга">
-{`const name = "Bilguun"
-const element = <h2>Сайн уу, {name}!</h2>`}
+const fruitList = (
+  <ul>
+    {fruits.map((fruit, index) => (
+      <li key={index}>{fruit}</li>
+    ))}
+  </ul>
+);`}
+          <Explain variant="info">
+            Array-ийн элементүүдийг `map` функцээр давтаж JSX дотор list болгох боломжтой.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-  <Explain variant="info">
-    <p>
-      JSX дотор <code>{}</code> хаалт ашиглан JavaScript-ийн хувьсагч, функцийн
-      үр дүнг оруулж болно.
-    </p>
-    <p>
-      Энэ нь компонент дотор динамик мэдээлэл харуулах үндсэн арга юм.
-    </p>
-  </Explain>
-  </CodeBlock>
-</div>
-  <div className="lr-section">
-  <CodeBlock label="Props дамжуулах">
-{`function Greeting({ name }) {
-  return <h3>Сайн уу, {name}!</h3>
-}
+      <div className="lr-section">
+        <CodeBlock label="Babel">
+          {`// JSX кодыг Babel дараах хэлбэрт хөрвүүлдэг:
+const element = <h1>Hello</h1>;
+// => React.createElement("h1", null, "Hello")`}
+          <Explain variant="info">
+            Browser шууд JSX ойлгодоггүй тул Babel ашиглан жирийн JavaScript болгон хөрвүүлдэг.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-<Greeting name="React" />`}
+      <div className="lr-section">
+        <CodeBlock label="Recipes as JSX">
+          {`const recipes = [
+  { id: 1, name: "Цуйван" },
+  { id: 2, name: "Бууз" },
+  { id: 3, name: "Банштай шөл" },
+];
 
-  <Explain variant="info">
-    <p>
-      Компонентод утга дамжуулахдаа <b>props</b> ашиглана. JSX дээр атрибут шиг бичээд
-      функцийн аргументаар хүлээн авдаг.
-    </p>
-    <p>
-      Ингэснээр нэг кодыг дахин ашиглах, өөр өөр өгөгдлөөр дуудах боломжтой.
-    </p>
-  </Explain>
-  </CodeBlock>
-</div>
-<div className="lr-section">
-  <CodeBlock label="Children ашиглах">
-{`function Layout({ children }) {
-  return <div className="box">{children}</div>
-}
+function RecipeList() {
+  return (
+    <div>
+      {recipes.map((r) => (
+        <p key={r.id}>{r.name}</p>
+      ))}
+    </div>
+  );
+}`}
+          <Explain variant="info">
+            Жагсаалтыг динамикаар JSX дотор үүсгэж болно.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-<Layout>
-  <p>Энэ бол контент хэсэг.</p>
-</Layout>`}
+      <div className="lr-section">
+        <CodeBlock label="React Fragments">
+          {`function FragmentExample() {
+  return (
+    <>
+      <h2>Title</h2>
+      <p>Fragment нь илүү div хэрэглэхгүйгээр олон элемент буцаана.</p>
+    </>
+  );
+}`}
+          <Explain variant="info">
+            Fragment ашигласнаар олон элементийг илүү `div` ашиглахгүйгээр бүлэглэж буцаадаг.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-  <Explain variant="info">
-    <p>
-      <b>children</b> prop нь JSX таг доторх агуулгыг төлөөлнө.
-    </p>
-    <p>
-      Энэ нь олон элементийг компонент дотор уян хатан оруулах боломж олгодог.
-    </p>
-  </Explain>
-  </CodeBlock>
-</div>
-<div className="lr-section">
-  <CodeBlock label="JSX дотор style ба className">
-{`const element = (
-  <h2 style={{ color: "blue", fontSize: "20px" }}>
-    Inline style жишээ
-  </h2>
-)`}
+      <div className="lr-section">
+        <CodeBlock label="Intro to Webpack & Create React App">
+          {`// Шинэ React project эхлүүлэх
+npx create-react-app my-app
+cd my-app
+npm start`}
+          <Explain variant="info">
+            Webpack нь кодыг нэгтгэж багцалдаг бол Create React App нь Webpack болон Babel-г автоматаар тохируулж өгдөг.
+          </Explain>
+        </CodeBlock>
+      </div>
 
-  <Explain variant="info">
-    <p>
-      JSX-д <b>class</b> атрибутыг <b>className</b> гэж бичдэг.
-    </p>
-    <p>
-      Мөн inline style-г <b>JavaScript объект</b> байдлаар дамжуулна. 
-      Энэ нь CSS-ийн camelCase бичлэг шаарддаг (жишээ нь <code>fontSize</code>).
-    </p>
-  </Explain>
-  </CodeBlock>
-</div>
+      <div className="lr-section">
+        <CodeBlock label="ALL">
+          {`import React from "react";
 
+// === JSX Element ===
+const element = <h1>Hello JSX</h1>;
+
+// === JSX Tips ===
+const name = "Andaa";
+const greeting = <p>Hello, {name}!</p>;
+
+// === Array Mapping ===
+const fruits = ["Apple", "Banana", "Cherry"];
+const fruitList = (
+  <ul>
+    {fruits.map((f, i) => <li key={i}>{f}</li>)}
+  </ul>
+);
+
+// === Fragment ===
+const FragmentExample = () => (
+  <>
+    <h2>Fragment Example</h2>
+    <p>No extra div!</p>
+  </>
+);
+
+function App() {
+  return (
+    <div>
+      <h1>React with JSX Demo</h1>
+      {element}
+      {greeting}
+      {fruitList}
+      <FragmentExample />
     </div>
   );
 }
-export default Chapter5
+
+export default App;`}
+        </CodeBlock>
+      </div>
+    </div>
+  );
+}
+
+export default Chapter5;

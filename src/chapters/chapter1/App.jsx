@@ -25,7 +25,21 @@ $ npm update -g npm`}
 
         <Explain variant="info">
           Энэ хэсэгт Node.js болон npm-ийн хувилбараа шалгана.
-          <div className="lr-muted">💡 Node.js 18 дээш байвал Vite сайн ажиллана.</div>
+        </Explain>
+      </div>
+
+      <div className="lr-section">
+        <CodeBlock label="Terminal">
+{`npx create-react-app my-app
+cd my-app
+npm start
+`}
+        </CodeBlock>
+
+        <Explain variant="info">
+          <p>npx create-react-app my-app → React үүсгэнэ.x</p>
+          <p>cd my-app → төслийн хавтас руу орно.</p>
+          <p>npm start → Development server</p>
         </Explain>
       </div>
 
