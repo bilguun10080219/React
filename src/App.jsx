@@ -1,7 +1,6 @@
 import { useState } from "react"
 import "./App.css"
 
-// бүх chapter-уудаа import хийе
 import Chapter1 from "./chapters/chapter1/App"
 import Chapter2 from "./chapters/chapter2/App"
 import Chapter3 from "./chapters/chapter3/App"
